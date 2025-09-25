@@ -21,8 +21,7 @@ jobs:
 
             - name: Sync Website to S3
               run: |
-                aws s3 sync ./website s3://cloudpipe-${{ secrets.AWS_ACCOUNT_ID }}-${{ secrets.AWS_REGION }} \
-                    --delete
+                aws s3 sync ./website s3://cloudpipe-084375589151 --delete
             
             - name: Deployment Success
               run: echo "✅ Deployment to S3 successful!"

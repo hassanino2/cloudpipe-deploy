@@ -42,13 +42,15 @@ Every code push to `main` triggers an automated sync of the `website/` folder to
    Website is deployed automatically to S3
    Check live site via CloudFOrmation WebsiteURL output
    
-   ## Troubleshooting Guide
-   | Problem                                             | Likely Cause                        | Solution                                                                                   |
-| --------------------------------------------------- | ----------------------------------- | ------------------------------------------------------------------------------------------ |
-| **NoSuchBucket Error**                              | Bucket name mismatch                | Make sure `S3_BUCKET_NAME` secret matches CloudFormation output                            |
-| **Access Denied on Website**                        | Public Access Block still enabled   | Verify `PublicAccessBlockConfiguration` is disabled in CloudFormation template             |
+## 🧰 Troubleshooting Guide
+
+| Problem | Likely Cause | Solution |
+|--------|---------------|---------|
+| **NoSuchBucket Error** | Bucket name mismatch | Make sure `S3_BUCKET_NAME` secret matches CloudFormation output |
+| **Access Denied on Website** | Public Access Block still enabled | Verify `PublicAccessBlockConfiguration` is disabled in CloudFormation template |
 | **PR stuck on “Waiting for status to be reported”** | Workflow doesn’t run on PR branches | Ensure `deploy.yaml` includes `pull_request:` trigger, then push a new commit to PR branch |
-| **Workflow Fails**                                  | AWS credentials or permissions      | Rotate IAM keys or verify policy grants `s3:PutObject` and `s3:DeleteObject`               |
+| **Workflow Fails** | AWS credentials or permissions | Rotate IAM keys or verify policy grants `s3:PutObject` and `s3:DeleteObject` |
+
 
  ## Architecture Diagram
  Developer ──> GitHub ──> GitHub Actions ──> AWS S3 (Static Website) ──> Browser

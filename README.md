@@ -12,29 +12,32 @@ Every code push to `main` triggers an automated sync of the `website/` folder to
    git clone https://github.com/hassanino2/cloudpipe-deploy.git
    cd cloudpipe-deploy
 2. Configure AWS CLI
+   ```bash
    aws configure
-3. Deploy Infrastructure
-   aws cloudformation create-stack \
-  --stack-name cloudpipe-website \
-  --template-body file://infrastructure/template.yaml \
-  --capabilities CAPABILITY_IAM
+3. Deploy Infrastructure with CloudFormation
+   ```bash
+   aws cloudformation create-stack --stack-name cloudpipe-website --template-body file://infrastructure/template.yaml --capabilities CAPABILITY_IAM
 4. Set GitHub Secrets
-   AWS_ACCESS_KEY_ID
-   AWS_SECRET_ACCESS_KEY
+   Go to GitHub -> Settings -> Secrets and variables -> Actions -> New repository secret
+   Add: 
+      AWS_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY
 
 ## Deployment Process
 1. Create a feature branch
+   ```bash
    git checkout -b feature/update-site
 2. Make changes inside the website/ folder (e.g., edit index.html)
 3. Commit and push
+   ```bash
    git add .
    git commit -m "Update website content"
    git push origin feature/update-site
-4. Open a Pull Request
+5. Open a Pull Request
    Go to your repo -> Click "Compare & pull request"
    Wait for the Deploy Website check to pass
    Merge into main
-5. Automatic Deployment
+6. Automatic Deployment
    GitHub Actions runs on main
    Website is deployed automatically to S3
    Check live site via CloudFOrmation WebsiteURL output

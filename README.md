@@ -52,18 +52,8 @@ Every code push to `main` triggers an automated sync of the `website/` folder to
 | **Workflow Fails** | AWS credentials or permissions | Rotate IAM keys or verify policy grants `s3:PutObject` and `s3:DeleteObject` |
 
 
- ## Architecture Diagram
- Developer ──> GitHub ──> GitHub Actions ──> AWS S3 (Static Website) ──> Browser
+## 🏗️ Architecture Diagram
 
- ## Final Project Structure
- cloudpipe-deploy/
-├── website/
-│   ├── index.html
-│   ├── css/
-│   └── js/
-├── .github/
-│   └── workflows/
-│       └── deploy.yaml
-├── infrastructure/
-│   └── template.yaml
-└── README.md
+```text
+Developer ──> GitHub ──> GitHub Actions ──> AWS S3 (Static Website) ──> Browser
+
